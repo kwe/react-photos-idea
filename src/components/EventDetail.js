@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Photo from "./Photo";
+import axios from "axios";
 
 class EventDetail extends Component {
   state = {
@@ -9,15 +10,15 @@ class EventDetail extends Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch(
+      const result = await axios.get(
         `https://wrp.huwevansimages.co.uk/api/events/${
           this.props.match.params.id
         }`
       );
-      const event = await res.json();
+      console.log(result.data);
       this.setState({
-        event: event,
-        photos: event.photos
+        event: result.data,
+        photos: result.data.photos
       });
     } catch (e) {
       console.log(e);
