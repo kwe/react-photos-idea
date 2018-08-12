@@ -15,7 +15,6 @@ class EventDetail extends Component {
           this.props.match.params.id
         }`
       );
-      console.log(result.data);
       this.setState({
         event: result.data,
         photos: result.data.photos
